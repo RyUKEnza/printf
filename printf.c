@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -39,3 +40,23 @@ int _printf(const char *format, ...)
 					count++;
 				}
 			}
+			else if (*format == '%')
+			{
+				write(1, "%", 1);
+				count++;
+			}
+		}
+		else
+		{
+			write(1, format, 1);
+			count++;
+
+		}
+
+		format++;
+	}
+
+	va_end(args);
+
+	return (count);
+}
