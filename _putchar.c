@@ -7,6 +7,10 @@
  * Return: The number of characters written (1) on success, -1 on error
  */
 int _putchar(char c)
-{
-	return write(1, &c, 1);
-}
+		{
+		if (write(1, &c, 1) == -1)
+		{
+		return (-1);
+		}
+		return (1);
+		}

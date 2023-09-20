@@ -27,6 +27,7 @@ typedef struct format_specifier
 	int precision;  /* Precision (default -1, meaning unspecified) */
 	char length;    /* Length modifier ('h', 'l', or '\0' for none) */
 	char specifier; /* Conversion specifier ('c', 's', 'd', etc.) */
+
 } format_specifier_t;
 
 /* Function prototypes for handling format specifiers */
