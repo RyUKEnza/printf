@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _printf - Produces output according to a format.
@@ -40,6 +41,42 @@ int _printf(const char *format, ...)
 					count++;
 				}
 			}
+			else if (*format == 'd' || format == 'i')
+			{
+				int num = va_arg(args, int);
+				int digits = 0;
+				int temp = num;
+				char *num_str;
+				int i;
+
+				if (num < 0)
+				{
+					write(1, "-", 1);
+					count++;
+					temp = -temp;
+				}
+
+				while (temp != 0)
+				{	
+					temp /= 10;
+					digits++;
+			}
+
+					num_str = malloc((digits +1) * sizeof(char));
+
+				for ( i = digits - 1; i >= 0; i--)
+				{
+					num_str[i] = (num % 10) + '0';
+					num /= 10;
+				}
+
+					write(1, num_str, digits);
+					count += digits;
+
+					free(num_str);
+			}
+
+		{	
 			else if (*format == '%')
 			{
 				write(1, "%", 1);
